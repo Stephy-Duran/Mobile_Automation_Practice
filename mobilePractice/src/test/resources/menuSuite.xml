@@ -5,7 +5,7 @@
     <parameter name="url" value="https://www.saucedemo.com/"/>
     <test name="Logout test">
         <classes>
-            <class name="com.globant.academy.tests.NavigationManuBar"/>
+            <class name="com.globant.academy.tests.NavigationMenuBarTest"/>
         </classes>
     </test>
 
