@@ -87,6 +87,14 @@ public class BaseScreen {
         element.click();
     }
     
+    
+    public void customSendKeys(WebElement element, String key) {
+        waitElementVisibility(element);
+        element.clear();
+        element.sendKeys(key);
+    }
+    
+    
     public HomeScreen clickOnHomeOption() {
         customClickOnElement(homeBtn);
         return new HomeScreen(driver);

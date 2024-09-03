@@ -6,21 +6,22 @@ import com.globant.academy.utils.test.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SuccessfulSignUpTest extends BaseTest {
+public class SuccessfulLoginTest extends BaseTest {
     
     @Test
-    public void VerifySignUp(){
+    public void verifySuccessfulLogin(){
         HomeScreen home = openHomeScreen();
         LoginScreen loginScreen = home.clickOnLoginOption();
-        Assert.assertTrue(loginScreen.arePrincipalElementsPresentInTheLoginScreen());
         
         loginScreen.clickOnSingUpOption();
         loginScreen.signUpWithRandomCredentials();
-        
         Assert.assertTrue(loginScreen.isSuccessfulSignUpMessageDisplayed("Signed Up!"));
+        loginScreen.clickOnOkSuccessfulMessageBtn();
         
-        
+        loginScreen.clickOnLoginSection();
+        loginScreen.logInWithExistingUser();
+        Assert.assertTrue(loginScreen.isSuccessfulLoginMsgShowed("You are logged in!"));
     }
     
-    
+
 }
