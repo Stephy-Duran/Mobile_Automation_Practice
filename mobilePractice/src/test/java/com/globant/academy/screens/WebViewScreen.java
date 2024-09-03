@@ -14,8 +14,7 @@ import java.util.function.Supplier;
 public class WebViewScreen extends BaseScreen {
     
     private static final String BOT_IMG = "new UiSelector().text(\"WebdriverIO\")";
-    private static final String TEXT_DESCRIPTION = "new UiSelector().text(\"Next-gen browser and mobile " +
-                                                   "automation test framework for Node.js\")";
+    private static final String TEXT_DESCRIPTION = "new UiSelector().text(\"Next-gen browser and mobile automation test framework for Node.js\")";
     private static final String BURGER_MENU = "new UiSelector().text(\"Toggle navigation bar\")";
     private static final String LOGIN_OPTION = "new UiSelector().text(\"\uDB80\uDF42\")";
     private static final Logger log = LogManager.getLogger(WebViewScreen.class);
@@ -47,13 +46,9 @@ public class WebViewScreen extends BaseScreen {
     public boolean arePrincipalElementsPresentInTheWebViewScreen() {
         Map<String, Supplier<Boolean>> elementsToCheck = new HashMap<>();
         elementsToCheck.put("Bot Image", this::isBotPresent);
-        //elementsToCheck.put("Description", this::descriptionIsEnable);
+        elementsToCheck.put("Description", this::isDescriptionEnable);
         elementsToCheck.put("Burger Menu", this::isBurgerMenuDisplayedAndContainsText);
         return super.arePrincipalElementsPresent(elementsToCheck);
     }
     
-    public LoginScreen clickOnLoginOption() {
-        loginBtn.click();
-        return new LoginScreen(driver);
-    }
 }

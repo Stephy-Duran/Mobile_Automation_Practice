@@ -25,7 +25,7 @@ public class NavigationMenuBarTest extends BaseTest {
         SwipeScreen swipeScreen = formsScreen.clickOnSwipeOption();
         Assert.assertTrue(swipeScreen.arePrincipalElementsPresentInTheSwipeScreen());
         
-        DragScreen dragScreen = swipeScreen.openDragScreen();
+        DragScreen dragScreen = swipeScreen.clickOnDragOption();
         Assert.assertTrue(dragScreen.arePrincipalElementsPresentInTheDragScreen());
         
         
