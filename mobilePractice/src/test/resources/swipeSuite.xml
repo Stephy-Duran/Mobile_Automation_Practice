@@ -3,10 +3,10 @@
 <suite name="Web automation Suit" verbose="1">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.saucedemo.com/"/>
-    <parameter name="successfulSignUpMsg" value="Signed Up!"/>
-    <test name="sing up test">
+    <parameter name="foundMeMsg" value="You found me!!!"/>
+    <test name="Swipe functionality test">
         <classes>
-            <class name="com.globant.academy.tests.SuccessfulSignUpTest"/>
+            <class name="com.globant.academy.tests.SwipeCardsTest"/>
         </classes>
     </test>
 

@@ -16,16 +16,15 @@ public class WebViewScreen extends BaseScreen {
     private static final String BOT_IMG = "new UiSelector().text(\"WebdriverIO\")";
     private static final String TEXT_DESCRIPTION = "new UiSelector().text(\"Next-gen browser and mobile automation test framework for Node.js\")";
     private static final String BURGER_MENU = "new UiSelector().text(\"Toggle navigation bar\")";
-    private static final String LOGIN_OPTION = "new UiSelector().text(\"\uDB80\uDF42\")";
-    private static final Logger log = LogManager.getLogger(WebViewScreen.class);
+
+    
     @AndroidFindBy(uiAutomator = BOT_IMG)
     private WebElement botImg;
     @AndroidFindBy(uiAutomator = TEXT_DESCRIPTION)
     private WebElement descriptionTxt;
     @AndroidFindBy(uiAutomator = BURGER_MENU)
     private WebElement burgerMenu;
-    @AndroidFindBy(uiAutomator = LOGIN_OPTION)
-    private WebElement loginBtn;
+    
     
     public WebViewScreen(AndroidDriver driver) {
         super(driver);

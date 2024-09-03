@@ -12,8 +12,7 @@ import java.util.function.Supplier;
 public class DragScreen extends BaseScreen {
     
     private static final String TITLE_TXT = ".textContains(\"Drop\")";
-    private static final String PARTS_BOARD =
-            "new UiSelector().className(\"android.widget.ImageView\").instance" + "(0)";
+    private static final String PARTS_BOARD = ".description(\"Drag-drop-screen\").childSelector(.className(\"android.widget.ImageView\"));";
     @AndroidFindBy(uiAutomator = TITLE_TXT)
     private WebElement titleTxt;
     @AndroidFindBy(uiAutomator = PARTS_BOARD)

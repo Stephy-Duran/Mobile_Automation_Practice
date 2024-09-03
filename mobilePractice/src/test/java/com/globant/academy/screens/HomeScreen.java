@@ -14,11 +14,11 @@ import java.util.function.Supplier;
 public class HomeScreen extends BaseScreen {
     
     public static final String TITLE_TXT = "new UiSelector().text(\"WEBDRIVER\")";
-    public static final String BOT_IMG = ".className(\"android.widget.ImageView\").instance(0)";
+    public static final String BOT_IMG = ".className(\"android.view.ViewGroup\").childSelector(.className(\"android.widget.ImageView\"))\n";
     public static final String DESCRIPTION_TXT = "new UiSelector().text(\"Demo app for the appium-boilerplate\")";
     public static final String APPLE_ICON_IMG = "new UiSelector().className(\"android.widget.TextView\").text" +
                                                 "(\"\uDB80\uDC35\")";
-    public static final String WEBVIEW_BTN= "new UiSelector().text(\"Webview\")";
+
     
     private static final Logger log = LoggerFactory.getLogger(HomeScreen.class);
     
@@ -30,8 +30,6 @@ public class HomeScreen extends BaseScreen {
     private WebElement descriptionTxt;
     @AndroidFindBy(uiAutomator = APPLE_ICON_IMG)
     private WebElement appleIcon;
-    @AndroidFindBy(uiAutomator = WEBVIEW_BTN)
-    private WebElement webViewBtn;
     
     public HomeScreen(AndroidDriver driver) {
         super(driver);
@@ -53,6 +51,13 @@ public class HomeScreen extends BaseScreen {
         return isElementDisplayed(appleIcon);
     }
     
+    /**
+     * Checks if the principal elements on the Home screen are visible.
+     * This method verifies the visibility of essential UI components on the Home screen.
+     *
+     * @return boolean True if all specified elements are visible on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean arePrincipalElementsPresentInTheHomeScreen() {
         Map<String, Supplier<Boolean>> elementsToCheck = new HashMap<>();
         elementsToCheck.put("Title", this::isTitleDisplayed);

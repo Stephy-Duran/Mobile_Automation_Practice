@@ -3,10 +3,11 @@
 <suite name="Web automation Suit" verbose="1">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.saucedemo.com/"/>
+    <parameter name="successfulLoginMsg" value="You are logged in!"/>
     <parameter name="successfulSignUpMsg" value="Signed Up!"/>
-    <test name="sing up test">
+    <test name="Log in test">
         <classes>
-            <class name="com.globant.academy.tests.SuccessfulSignUpTest"/>
+            <class name="com.globant.academy.tests.SuccessfulLoginTest"/>
         </classes>
     </test>
 
