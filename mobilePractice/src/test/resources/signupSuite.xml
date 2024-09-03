@@ -3,9 +3,9 @@
 <suite name="Web automation Suit" verbose="1">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.saucedemo.com/"/>
-    <test name="Menu test">
+    <test name="sing up test">
         <classes>
-            <class name="com.globant.academy.tests.NavigationMenuBarTest"/>
+            <class name="com.globant.academy.tests.SuccessfulSignUpTest"/>
         </classes>
     </test>
 

@@ -1,7 +1,8 @@
 package com.globant.academy.utils.screen;
 
-import com.globant.academy.screens.HomeScreen;
+import com.globant.academy.screens.*;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -20,6 +20,25 @@ public class BaseScreen {
     protected AndroidDriver driver;
     protected WebDriverWait wait;
     private static final Logger log = LoggerFactory.getLogger(HomeScreen.class);
+    private static final String HOME_BTN = "new UiSelector().text(\"Home\")";
+    private static final String WEB_VIEW_BTN = ".text(\"Webview\")";
+    private static final String LOG_IN_BTN = ".text(\"Login\")";
+    private static final String FORMS_BTN = "new UiSelector().text(\"Forms\")";
+    private static final String SWIPE_BTN = "new UiSelector().text(\"Swipe\")";
+    private static final String DRAG_BTN = "//android.widget.TextView[@text=\"Drag\"]";
+    
+    @AndroidFindBy(uiAutomator = HOME_BTN)
+    private WebElement homeBtn;
+    @AndroidFindBy(uiAutomator = WEB_VIEW_BTN)
+    private WebElement webViewBtn;
+    @AndroidFindBy(uiAutomator = LOG_IN_BTN)
+    private WebElement loginBtn;
+    @AndroidFindBy(uiAutomator = FORMS_BTN)
+    private WebElement formsBtn;
+    @AndroidFindBy(uiAutomator = SWIPE_BTN)
+    private WebElement swipeBtn;
+    @AndroidFindBy(xpath = DRAG_BTN)
+    private WebElement dragBtn;
     
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
@@ -62,13 +81,39 @@ public class BaseScreen {
         waitElementVisibility(element);
         return Boolean.parseBoolean(element.getAttribute("clickable"));
     }
-    public void waitSomeSeconds(int seconds) {
-        try {
-            Thread.sleep(1000L * seconds);
-        }
-        catch(InterruptedException e) {
-            log.error(e.getMessage());
-            Thread.currentThread().interrupt();
-        }
+    
+    public void customClickOnElement(WebElement element) {
+        waitElementVisibility(element);
+        element.click();
+    }
+    
+    public HomeScreen clickOnHomeOption() {
+        customClickOnElement(homeBtn);
+        return new HomeScreen(driver);
+    }
+    
+    public WebViewScreen clickOnWebViewOption() {
+        customClickOnElement(webViewBtn);
+        return new WebViewScreen(driver);
+    }
+    
+    public LoginScreen clickOnLoginOption() {
+        customClickOnElement(loginBtn);
+        return new LoginScreen(driver);
+    }
+    
+    public FormsScreen clickOnFormsOption() {
+        customClickOnElement(formsBtn);
+        return new FormsScreen(driver);
+    }
+    
+    public SwipeScreen clickOnSwipeOption() {
+        customClickOnElement(swipeBtn);
+        return new SwipeScreen(driver);
+    }
+    
+    public DragScreen clickOnDragOption() {
+        customClickOnElement(dragBtn);
+        return new DragScreen(driver);
     }
 }

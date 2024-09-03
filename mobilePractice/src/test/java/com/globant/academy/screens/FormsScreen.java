@@ -56,8 +56,4 @@ public class FormsScreen extends BaseScreen {
         return super.arePrincipalElementsPresent(elementsToCheck);
     }
     
-    public SwipeScreen clickOnSwipeOption() {
-        swipeMenuOption.click();
-        return new SwipeScreen(driver);
-    }
 }

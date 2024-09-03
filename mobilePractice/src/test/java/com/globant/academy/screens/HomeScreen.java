@@ -62,8 +62,5 @@ public class HomeScreen extends BaseScreen {
         return super.arePrincipalElementsPresent(elementsToCheck);
     }
     
-    public WebViewScreen clickOnWebViewOption() {
-        webViewBtn.click();
-        return new WebViewScreen(driver);
-    }
+    
 }

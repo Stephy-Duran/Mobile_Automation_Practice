@@ -49,8 +49,4 @@ public class SwipeScreen extends BaseScreen {
         return super.arePrincipalElementsPresent(elementsToCheck);
     }
     
-    public DragScreen openDragScreen() {
-        dragMenuOpt.click();
-        return new DragScreen(driver);
-    }
 }
