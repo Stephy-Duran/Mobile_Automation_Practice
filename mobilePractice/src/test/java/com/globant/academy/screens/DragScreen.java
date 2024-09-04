@@ -24,7 +24,7 @@ public class DragScreen extends BaseScreen {
     
     
     /**
-     * Verify if the title element is displayed on the screen.
+     * Verifies if the title element is displayed on the screen.
      *
      * @return boolean True if the title element is displayed; otherwise, false.
      * @author Stephany Duran

@@ -46,7 +46,7 @@ public class FormsScreen extends BaseScreen {
     }
     
     /**
-     * Verify if the Active Button element is visible.
+     * Verifies if the Active Button element is visible.
      *
      * @return boolean True if the element are displayed and focusable on the screen; otherwise, false.
      * @author Stephany Duran
@@ -56,7 +56,7 @@ public class FormsScreen extends BaseScreen {
     }
     
     /**
-     * Verify if the Inactive Button element is visible.
+     * Verifies if the Inactive Button element is visible.
      *
      * @return boolean True if the element are displayed and focusable on the screen; otherwise, false.
      * @author Stephany Duran

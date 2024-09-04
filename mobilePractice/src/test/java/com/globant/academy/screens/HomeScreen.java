@@ -36,7 +36,7 @@ public class HomeScreen extends BaseScreen {
     }
     
     /**
-     * Verify if the Title element is visible.
+     * Verifies if the Title element is visible.
      *
      * @return boolean True if the element are displayed and focusable on the screen; otherwise, false.
      * @author Stephany Duran

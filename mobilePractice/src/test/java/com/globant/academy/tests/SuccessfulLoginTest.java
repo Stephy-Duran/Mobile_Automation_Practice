@@ -11,19 +11,17 @@ public class SuccessfulLoginTest extends BaseTest {
     
     @Test
     @Parameters({"successfulLoginMsg", "successfulSignUpMsg"})
-    public void verifySuccessfulLogin(String successfulLoginMsg, String successfulSingUpMsg ){
+    public void verifySuccessfulLogin(String successfulLoginMsg, String successfulSingUpMsg) {
         HomeScreen home = openHomeScreen();
         LoginScreen loginScreen = home.clickOnLoginOption();
-        
         loginScreen.clickOnSingUpOption();
         loginScreen.signUpWithRandomCredentials();
-        Assert.assertTrue(loginScreen.isSuccessfulSignUpMessageDisplayed(successfulSingUpMsg));
+        Assert.assertTrue(loginScreen.isSuccessfulSignUpMessageDisplayed(successfulSingUpMsg),
+                          "Expected successful sign-up message was not displayed.");
         loginScreen.clickOnOkSuccessfulMessageBtn();
-        
         loginScreen.clickOnLoginSection();
         loginScreen.logInWithExistingUser();
-        Assert.assertTrue(loginScreen.isSuccessfulLoginMsgShowed(successfulLoginMsg));
+        Assert.assertTrue(loginScreen.isSuccessfulLoginMsgShowed(successfulLoginMsg),
+                          "Expected successful Log in message was not displayed.");
     }
-    
-
 }

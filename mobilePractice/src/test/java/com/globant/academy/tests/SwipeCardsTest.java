@@ -15,13 +15,13 @@ public class SwipeCardsTest extends BaseTest {
         HomeScreen homeScreen = openHomeScreen();
         SwipeScreen swipeScreen = homeScreen.clickOnSwipeOption();
         swipeScreen.swipeRightToLeft();
-        Assert.assertTrue(swipeScreen.isOldCardIsHidden());
-        
+        Assert.assertTrue(swipeScreen.isOldCardIsHidden(),
+                          "The previous card should be hidden after swiping right to left");
         swipeScreen.swipeThroughCardsUntilLast();
-        Assert.assertTrue(swipeScreen.isTheLastCardTheOnlyOneVisible());
-        
+        Assert.assertTrue(swipeScreen.isTheLastCardTheOnlyOneVisible(),
+                          "There should be only one card visible after swiping through all cards.");
         swipeScreen.swipeUpUntilYouFindMeText();
-        Assert.assertTrue(swipeScreen.isYouFindMeMsgPresent(foundMeMsg));
+        Assert.assertTrue(swipeScreen.isYouFindMeMsgPresent(foundMeMsg),
+                          "The 'You find me' message was not found'");
     }
-    
 }
