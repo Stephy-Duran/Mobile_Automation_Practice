@@ -22,14 +22,33 @@ public class DragScreen extends BaseScreen {
         super(driver);
     }
     
+    
+    /**
+     * Verify if the title element is displayed on the screen.
+     *
+     * @return boolean True if the title element is displayed; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean isTitlePresent() {
         return isElementDisplayed(titleTxt);
     }
     
+    /**
+     * Checks if the piece board element is displayed on the screen.
+     *
+     * @return boolean True if the board element is displayed; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean isBoardPresent() {
         return isElementDisplayed(board);
     }
     
+    /**
+     * Checks if the dropdown element is visible and focusable on the screen.
+     *
+     * @return boolean True if the dropdown element is both displayed and focusable; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean arePrincipalElementsPresentInTheDragScreen() {
         Map<String, Supplier<Boolean>> elementsToCheck = new HashMap<>();
         elementsToCheck.put("Title", this::isTitlePresent);

@@ -72,6 +72,14 @@ public class LoginScreen extends BaseScreen {
         return isElementDisplayed(loginBtn);
     }
     
+    
+    /**
+     * Checks if the principal elements on the Login screen are visible.
+     * This method verifies the visibility of essential UI components on the Home screen.
+     *
+     * @return boolean True if all specified elements are visible on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean arePrincipalElementsPresentInTheLoginScreen() {
         Map<String, Supplier<Boolean>> elementsToCheck = new HashMap<>();
         elementsToCheck.put("Email", this::isEmailTxtClickable);
@@ -93,6 +101,13 @@ public class LoginScreen extends BaseScreen {
         customClickOnElement(loginSectionBtn);
     }
     
+    /**
+     * Logs in with the credentials of the most recently registered user.
+     * Retrieves the last user's email and password from the stored credentials
+     * and uses them to fill in the login form fields before clicking the login button.
+     *
+     * @author Stephany Duran
+     */
     public void logInWithExistingUser(){
         Map<String, String> lastCredentials = getLastUserCredentials();
         String email = lastCredentials.get("email");
@@ -103,12 +118,25 @@ public class LoginScreen extends BaseScreen {
         loginBtn.click();
     }
     
+    /**
+     * Checks if the displayed message matches the expected message.
+     *
+     * @param message The expected message to verify.
+     * @return boolean True if the current message matches; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean isSuccessfulLoginMsgShowed(String message){
         waitElementVisibility(successfulLoginMsg);
         return successfulLoginMsg.getText().equalsIgnoreCase(message); //You are logged in!
     }
     
-    
+    /**
+     * Signs up a user with randomly generated credentials.
+     * This method calls another method to generate random email and password credentials,
+     * then fills in the sign-up form with these credentials and submits the form.
+     *
+     * @author Stephany Duran
+     */
     public void signUpWithRandomCredentials() {
         Map<String, String> credentials = getRandomEmailAndPassword();
         String email = credentials.get("email");
@@ -201,7 +229,14 @@ public class LoginScreen extends BaseScreen {
     public boolean isSuccessfulSignUpMessageDisplayed(String message){
         return isElementDisplayed(successfulMessage) && successfulMessage.getText().equalsIgnoreCase(message);
     }
-    
+    /**
+     * Generates a random string of the specified length.
+     * The string consists of alphanumeric characters (both uppercase and lowercase).
+     *
+     * @param length The length of the random string to generate.
+     * @return A random string of the specified length.
+     * @author Stephany Duran
+     */
     private String generateRandomString(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();

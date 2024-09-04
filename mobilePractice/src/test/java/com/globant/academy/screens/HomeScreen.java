@@ -35,6 +35,12 @@ public class HomeScreen extends BaseScreen {
         super(driver);
     }
     
+    /**
+     * Verify if the Title element is visible.
+     *
+     * @return boolean True if the element are displayed and focusable on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean isTitleDisplayed() {
         return isElementDisplayed(titleTxt);
     }
@@ -43,6 +49,12 @@ public class HomeScreen extends BaseScreen {
         return isElementEnable(botImg);
     }
     
+    /**
+     * Verifies if the description element on the home screen is visible.
+     *
+     * @return boolean True if the element are displayed and focusable on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean isDescriptionPresent() {
         return isElementDisplayed(descriptionTxt);
     }

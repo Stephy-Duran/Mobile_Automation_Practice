@@ -16,7 +16,11 @@ public class SwipeCardsTest extends BaseTest {
         SwipeScreen swipeScreen = homeScreen.clickOnSwipeOption();
         swipeScreen.swipeRightToLeft();
         Assert.assertTrue(swipeScreen.isOldCardIsHidden());
+        
+        swipeScreen.swipeThroughCardsUntilLast();
         Assert.assertTrue(swipeScreen.isTheLastCardTheOnlyOneVisible());
+        
+        swipeScreen.swipeUpUntilYouFindMeText();
         Assert.assertTrue(swipeScreen.isYouFindMeMsgPresent(foundMeMsg));
     }
     

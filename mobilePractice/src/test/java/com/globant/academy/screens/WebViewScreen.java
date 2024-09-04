@@ -42,6 +42,13 @@ public class WebViewScreen extends BaseScreen {
         return isElementDisplayedAndContainText(burgerMenu, "Toggle navigation bar");
     }
     
+    /**
+     * Checks if the principal elements on the Web View screen are visible.
+     * This method verifies the visibility of essential UI components on the Web View screen.
+     *
+     * @return boolean True if all specified elements are visible on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean arePrincipalElementsPresentInTheWebViewScreen() {
         Map<String, Supplier<Boolean>> elementsToCheck = new HashMap<>();
         elementsToCheck.put("Bot Image", this::isBotPresent);

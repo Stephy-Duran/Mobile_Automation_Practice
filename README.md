@@ -32,7 +32,7 @@ To ensure the framework functions correctly, please follow these requirements:
    - To build the project and skip tests, use the following command:
 
    ```bash
-      mvn clean install -DskipTests\
+      mvn clean install -DskipTests
 
 
 
