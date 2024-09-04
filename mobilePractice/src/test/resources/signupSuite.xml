@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Web automation Suit" verbose="1">
+    <parameter name="successfulSignUpMsg" value="Signed Up!"/>
+    <test name="sing up test">
+        <classes>
+            <class name="com.globant.academy.tests.SuccessfulSignUpTest"/>
+        </classes>
+    </test>
+
+</suite>
