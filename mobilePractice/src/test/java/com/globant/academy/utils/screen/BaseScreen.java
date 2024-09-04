@@ -19,14 +19,13 @@ public class BaseScreen {
     
     protected AndroidDriver driver;
     protected WebDriverWait wait;
-    private static final Logger log = LoggerFactory.getLogger(HomeScreen.class);
+    private static final Logger log = LoggerFactory.getLogger(BaseScreen.class);
     private static final String HOME_BTN = "new UiSelector().text(\"Home\")";
     private static final String WEB_VIEW_BTN = ".text(\"Webview\")";
     private static final String LOG_IN_BTN = ".text(\"Login\")";
     private static final String FORMS_BTN = "new UiSelector().text(\"Forms\")";
     private static final String SWIPE_BTN = "new UiSelector().text(\"Swipe\")";
     private static final String DRAG_BTN = "//android.widget.TextView[@text=\"Drag\"]";
-    
     @AndroidFindBy(uiAutomator = HOME_BTN)
     private WebElement homeBtn;
     @AndroidFindBy(uiAutomator = WEB_VIEW_BTN)
@@ -43,13 +42,22 @@ public class BaseScreen {
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(18));
     }
     
     public void waitElementVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    
+    /**
+     * Checks if all specified elements are present on the screen.
+     * The use of Supplier<Boolean> allows for verifying the state of each element at the time
+     * of invocation, ensuring up-to-date checks.
+     *
+     * @param elementsToCheck A map where the key is the element name and the value is a Supplier
+     *                        that returns a boolean indicating if the element is present.
+     * @return boolean True if all elements are present; otherwise, false.
+     * @author Stephany Duran
+     */
     public boolean arePrincipalElementsPresent(Map<String, Supplier<Boolean>> elementsToCheck) {
         for(Map.Entry<String, Supplier<Boolean>> entry : elementsToCheck.entrySet()) {
             String elementName = entry.getKey();
@@ -87,13 +95,15 @@ public class BaseScreen {
         element.click();
     }
     
+    public WebDriverWait setUpWait(long time) {
+        return new WebDriverWait(driver, Duration.ofSeconds(time));
+    }
     
     public void customSendKeys(WebElement element, String key) {
         waitElementVisibility(element);
         element.clear();
         element.sendKeys(key);
     }
-    
     
     public HomeScreen clickOnHomeOption() {
         customClickOnElement(homeBtn);
@@ -123,5 +133,24 @@ public class BaseScreen {
     public DragScreen clickOnDragOption() {
         customClickOnElement(dragBtn);
         return new DragScreen(driver);
+    }
+    
+    /**
+     * Checks if a web element is visible on the screen within a specified time.
+     *
+     * @param element The WebElement to check.
+     * @param seconds The maximum time in seconds to wait for the element to become visible.
+     * @return boolean True if the element is visible on the screen; otherwise, false.
+     * @author Stephany Duran
+     */
+    public boolean isElementOnScreen(WebElement element, long seconds) {
+        try {
+            setUpWait(seconds).until(ExpectedConditions.visibilityOf(element));
+            return true;
+        }
+        catch(Exception e) {
+            log.info("The element is not present on the screen");
+            return false;
+        }
     }
 }
